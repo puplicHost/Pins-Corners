@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PINS & CORNERS | Media Center</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-content {
+            padding-top: 150px;
+        }
+
+        .gallery-section {
+            margin-bottom: 120px;
+        }
+
+        /* Photo Gallery - Masonry Style */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 250px;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .photo-item {
+            background-color: var(--card-bg);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 500ms ease;
+            opacity: 0.8;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .photo-item.wide {
+            grid-column: span 2;
+        }
+
+        .photo-item.tall {
+            grid-row: span 2;
+        }
+
+        /* Video Gallery - 2x2 Grid */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-item {
+            background-color: var(--card-bg);
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-item-thumbnail {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 300ms ease;
+        }
+
+        .video-item:hover .video-item-thumbnail {
+            filter: brightness(1.2);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-accent);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+            font-size: 24px;
+            box-shadow: 0 10px 30px rgba(138, 52, 30, 0.4);
+            transition: 300ms ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-button::before {
+            content: '';
+            border-left: 15px solid #FFFFFF;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-item:hover .play-button {
+            transform: scale(1.1);
+            background-color: var(--accent-dark);
+        }
+
+        .video-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #FFFFFF;
+            font-family: var(--font-serif);
+            font-size: 20px;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Global Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="image/logo.png" alt="PINS & CORNERS Logo" height="60">
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">HOME PAGE</a></li>
+                    <li><a href="pins-corners.html">PINS&CORNERS</a></li>
+                    <li><a href="projects.html">PROJECTS</a></li>
+                    <li><a href="media-center.html" class="active">MEDIA CENTER</a></li>
+                    <li><a href="our-news.html">OUR NEWS</a></li>
+                    <li><a href="reach-us.html">REACH US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Overlay -->
+    <h1 class="page-display-title">media center</h1>
+
+    <div class="page-content container">
+
+        <!-- PHOTO GALLERY -->
+        <section class="gallery-section fade-up">
+            <span class="section-label">PHOTO GALLERY</span>
+            <div class="photo-gallery">
+                <div class="photo-item wide fade-up">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
+                        alt="Architecture 01">
+                </div>
+                <div class="photo-item tall fade-up">
+                    <img src="https://images.unsplash.com/photo-1600607687940-4e524cb350b1?auto=format&fit=crop&q=80&w=800"
+                        alt="Interior 01">
+                </div>
+                <div class="photo-item fade-up">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=800"
+                        alt="Exterior 01">
+                </div>
+                <div class="photo-item fade-up">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"
+                        alt="Landscape 01">
+                </div>
+                <div class="photo-item wide fade-up">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200"
+                        alt="Lobby 01">
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO GALLERY -->
+        <section class="gallery-section fade-up">
+            <span class="section-label">VIDEO GALLERY</span>
+            <div class="video-gallery">
+                <div class="video-item fade-up">
+                    <div class="video-item-thumbnail">
+                        <div class="play-button"></div>
+                    </div>
+                    <div class="video-title">The WESTWIND Vision</div>
+                </div>
+                <div class="video-item fade-up">
+                    <div class="video-item-thumbnail" style="background: linear-gradient(45deg, #1b0a04, #2a110a);">
+                        <div class="play-button"></div>
+                    </div>
+                    <div class="video-title">Philosophy of PINS & CORNERS</div>
+                </div>
+                <div class="video-item fade-up">
+                    <div class="video-item-thumbnail" style="background: linear-gradient(45deg, #051a05, #0a250a);">
+                        <div class="play-button"></div>
+                    </div>
+                    <div class="video-title">Sustainability in Action</div>
+                </div>
+                <div class="video-item fade-up">
+                    <div class="video-item-thumbnail" style="background: linear-gradient(45deg, #111, #222);">
+                        <div class="play-button"></div>
+                    </div>
+                    <div class="video-title">Behind the Architecture</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Professional 2026 Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand fade-up">
+                <img src="image/logo.png" alt="PINS & CORNERS Logo" class="footer-logo">
+                <p class="brand-bio">
+                    Purposeful Pins, Lasting Corners. We create landmark destinations that bridge tradition with
+                    futuristic architecture.
+                </p>
+                <div class="footer-socials">
+                    <a href="https://linkedin.com" class="social-icon" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com" class="social-icon" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" class="social-icon" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://youtube.com" class="social-icon" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-group fade-up">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="pins-corners.html">Pins & Corners</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="media-center.html">Media Center</a></li>
+                    <li><a href="our-news.html">Our News</a></li>
+                    <li><a href="reach-us.html">Reach Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-info fade-up">
+                <h4 class="footer-heading">Contact</h4>
+                <div class="contact-item">
+                    <span class="contact-label">Hotline</span>
+                    <a href="tel:17576" class="contact-value">17576</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:info@pinsandcorners.com" class="contact-value">info@pinsandcorners.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Visit Us</span>
+                    <span class="contact-value">Sheikh Zayed, Cairo, Egypt</span>
+                </div>
+            </div>
+
+            <div class="footer-newsletter fade-up">
+                <h4 class="footer-heading">Stay Connected</h4>
+                <p>Join our exclusive network for latest project launches.</p>
+                <form class="footer-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="footer-btn"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container bottom-content">
+                <p>&copy; 2025 Pins & Corners. Developed with Excellence.</p>
+                <div class="developer-credit">Designed by <span class="accent-text">Yaaalla</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Decorations -->
+    <div class="bottom-decorations">
+        <div class="curved-line curved-line-1"></div>
+        <div class="curved-line curved-line-2"></div>
+        <div class="watermark-ampersand">&</div>
+    </div>
+
+    <!-- Global Floating CTAs -->
+    <div class="floating-ctas">
+        <div class="cta-button cta-call" aria-label="Call Us">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="cta-button cta-whatsapp" aria-label="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="cta-button cta-chatbot" aria-label="Chat Bot">
+            <i class="fas fa-comment-dots"></i>
+            <span class="tooltip">Chat with us</span>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

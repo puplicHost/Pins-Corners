@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PINS & CORNERS | Places to Discover</title>
+    <!-- Primary SEO -->
+    <meta name="description"
+        content="PINS & CORNERS - Purposeful Pins, Lasting Corners. Luxury real estate developer creating landmark destinations.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Home Page Specifics */
+        /* 2026 Professional Hero Design */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 200px;
+            /* Offset to clear fixed header with extra breathing room */
+        }
+
+        /* Ambient Identity Glow */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--primary-accent);
+            filter: blur(150px);
+            opacity: 0.15;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: pulseGlow 10s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from {
+                opacity: 0.1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            to {
+                opacity: 0.2;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 1400px;
+            max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-logo-container {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .hero-logo {
+            width: 350px;
+            filter: brightness(0) invert(1);
+            opacity: 0;
+            transform: scale(0.95);
+            animation: heroLogoReveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes heroLogoReveal {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(40px, 8vw, 100px);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.6em;
+            color: var(--primary-accent);
+            margin-bottom: 10px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.8s forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 120px;
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 80px;
+            }
+
+            .hero-logo {
+                width: 200px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--primary-accent), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            animation: scrollLineMove 2s infinite ease-in-out;
+        }
+
+        @keyframes scrollLineMove {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services-section {
+            padding: 100px 10%;
+            background-color: var(--bg-color);
+        }
+
+        .service-block {
+            padding: 100px 0;
+            border-top: 1px solid var(--primary-accent);
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            /* Image is larger (1.4) than text (1) */
+            gap: 60px;
+            align-items: center;
+        }
+
+        .service-block:nth-child(even) {
+            grid-template-columns: 1.4fr 1fr;
+            /* Keep same layout even for even children as requested */
+        }
+
+        .service-content {
+            padding: 40px;
+            border: 1px solid rgba(138, 52, 30, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #000000 70%, #1a0a06 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom right, rgba(138, 52, 30, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .service-block h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        .service-block p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 2;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .service-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            order: -1;
+            /* Ensures image always stays on the left */
+        }
+
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.2) contrast(1.1);
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .service-block:hover .service-image {
+            transform: scale(1.08);
+            filter: grayscale(0);
+        }
+
+        @media (max-width: 991px) {
+            .services-section {
+                padding: 60px 5%;
+            }
+
+            .service-block,
+            .service-block:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 40px 0;
+            }
+
+            .service-block h2 {
+                font-size: 26px;
+                /* Scaled down for mobile */
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            .service-image-wrapper {
+                aspect-ratio: 16 / 9;
+                order: -1;
+            }
+
+            .service-content {
+                padding: 25px 15px;
+                text-align: center;
+                height: auto;
+            }
+
+            .service-block p {
+                text-align: center;
+                font-size: 15px;
+                line-height: 1.7;
+            }
+        }
+
+        .projects-teaser {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .teaser-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+
+        .testimonial-client {
+            color: var(--section-labels);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .partners-list {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .partner-logo {
+            filter: grayscale(1);
+            opacity: 0.7;
+            transition: 300ms ease;
+            cursor: pointer;
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .article-card {
+            background: linear-gradient(135deg, #000000 70%, #1a0a06 100%);
+            border: 1px solid rgba(138, 52, 30, 0.1);
+            overflow: hidden;
+            transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .article-image-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s ease;
+            filter: grayscale(0.5);
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.1);
+            filter: grayscale(0);
+        }
+
+        .article-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-date {
+            font-family: var(--font-sans);
+            color: var(--primary-accent);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .article-headline {
+            font-size: 22px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+            font-weight: 400;
+        }
+
+        .article-excerpt {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .read-more {
+            margin-top: auto;
+            color: var(--primary-accent);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Global Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="image/logo.png" alt="PINS & CORNERS Logo" height="60">
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active">HOME PAGE</a></li>
+                    <li><a href="pins-corners.html">PINS&CORNERS</a></li>
+                    <li><a href="projects.html">PROJECTS</a></li>
+                    <li><a href="media-center.html">MEDIA CENTER</a></li>
+                    <li><a href="our-news.html">OUR NEWS</a></li>
+                    <li><a href="reach-us.html">REACH US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Overlay (Home Page) -->
+    <!-- (Home page hero text is centered Montserrat Light 13px as requested) -->
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo-container">
+                <img src="image/logo.png" alt="PINS & CORNERS Logo" class="hero-logo">
+            </div>
+            <h1 class="hero-title">
+                <span>Purposeful Pins</span>
+                Lasting Corners
+            </h1>
+            <p class="hero-text">
+                Luxury real estate developer creating landmark destinations through sophisticated architecture and
+                deep-rooted design philosophy.
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="service-block fade-up">
+                <div class="service-content">
+                    <span class="section-label">ARCHITECTURE</span>
+                    <h2>ARCHITECTURE</h2>
+                    <p>Our design philosophy is inspired by nature. Like ventifacts—stones sculpted by desert winds—our
+                        architecture captures the fluid essence of Egypt's landscapes. Buildings emerge as textured
+                        masses
+                        reminiscent of sand dunes, creating a sense of movement and harmony with the environment.</p>
+                </div>
+                <div class="service-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                        alt="Architecture inspired by desert dunes" class="service-image">
+                </div>
+            </div>
+
+            <div class="service-block fade-up">
+                <div class="service-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
+                        alt="Premium interior and urban design" class="service-image">
+                </div>
+                <div class="service-content">
+                    <span class="section-label">INTERIOR & URBAN DESIGN</span>
+                    <h2>INTERIOR & URBAN DESIGN</h2>
+                    <p>We design from the inside out and the outside in. Our interiors extend the external narrative,
+                        using
+                        natural materials and fluid layouts. Our urban design prioritizes walkability, community
+                        integration, and creating vibrant, connected neighborhoods.</p>
+                </div>
+            </div>
+
+            <div class="service-block fade-up">
+                <div class="service-content">
+                    <span class="section-label">LANDSCAPE</span>
+                    <h2>LANDSCAPE</h2>
+                    <p>We craft urban oases. Inspired by desert palm groves, our landscapes feature intricate planting
+                        and
+                        serene water features that tie the environment together, offering a calming retreat in the heart
+                        of
+                        the city.</p>
+                </div>
+                <div class="service-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
+                        alt="Lush landscape design" class="service-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Teaser Section -->
+    <section class="projects-teaser fade-up">
+        <div class="container teaser-content">
+            <span class="section-label">PROJECTS</span>
+            <p>Our very first pinned corner lies in the vibrant heart of Sheikh Zayed. Nestled along El Bostan Road,
+                Zayed's liveliest artery, this prime location stands at the intersection of accessibility and
+                visibility, making it the perfect cradle for our debut project WESTWIND.</p>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="latest-news-section">
+        <div class="container">
+            <span class="section-label">LATEST NEWS</span>
+            <div class="news-grid">
+                <div class="article-card fade-up">
+                    <div class="article-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                            alt="Skyline" class="article-image">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">March 02, 2025</span>
+                        <h3 class="article-headline">The Future of Sheikh Zayed's Skyline</h3>
+                        <p class="article-excerpt">Exploring how WESTWIND is redefining accessibility and architectural
+                            excellence in Egypt's most vibrant district.</p>
+                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="article-card fade-up">
+                    <div class="article-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop"
+                            alt="Sustainable Desert Design" class="article-image">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">February 15, 2025</span>
+                        <h3 class="article-headline">Sustainable Design in Desert Landscapes</h3>
+                        <p class="article-excerpt">How PINS & CORNERS integrates natural elements to create lasting
+                            community corners.</p>
+                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="article-card fade-up">
+                    <div class="article-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+                            alt="Partnerships" class="article-image">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">January 20, 2025</span>
+                        <h3 class="article-headline">Strategic International Partnerships</h3>
+                        <p class="article-excerpt">A look into our collaborations with world-class consultants to
+                            deliver
+                            EGP 20 Billion flagship projects.</p>
+                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <span class="section-label">CLIENT TESTIMONIALS</span>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up">
+                    <p class="testimonial-quote">"Their attention to detail and commitment to quality is evident in
+                        every architectural line."</p>
+                    <p class="testimonial-client">John Doe - Executive Director</p>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <p class="testimonial-quote">"PINS & CORNERS doesn't just build; they create destinations that
+                        resonate with people."</p>
+                    <p class="testimonial-client">Jane Smith - Business Consultant</p>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <p class="testimonial-quote">"The level of strategic planning behind WESTWIND is truly international
+                        standard."</p>
+                    <p class="testimonial-client">Robert Brown - Investor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <span class="section-label">PARTNERS LIST</span>
+            <div class="partners-list">
+                <div class="partner-logo fade-up">
+                    NUTSHELL&reg;
+                    <span>Branding Agency</span>
+                </div>
+                <div class="partner-logo fade-up">
+                    MOHAMED TALAAT
+                    <span>ARCHITECTS &middot; Est. 1996</span>
+                </div>
+                <div class="partner-logo fade-up">
+                    SABBOUR CONSULTING
+                    <span>Since 1957</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional 2026 Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand fade-up">
+                <img src="image/logo.png" alt="PINS & CORNERS Logo" class="footer-logo">
+                <p class="brand-bio">
+                    Purposeful Pins, Lasting Corners. We create landmark destinations that bridge tradition with
+                    futuristic architecture.
+                </p>
+                <div class="footer-socials">
+                    <a href="https://linkedin.com" class="social-icon" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com" class="social-icon" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" class="social-icon" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://youtube.com" class="social-icon" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-group fade-up">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="pins-corners.html">Pins & Corners</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="media-center.html">Media Center</a></li>
+                    <li><a href="our-news.html">Our News</a></li>
+                    <li><a href="reach-us.html">Reach Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-info fade-up">
+                <h4 class="footer-heading">Contact</h4>
+                <div class="contact-item">
+                    <span class="contact-label">Hotline</span>
+                    <a href="tel:17576" class="contact-value">17576</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:info@pinsandcorners.com" class="contact-value">info@pinsandcorners.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Visit Us</span>
+                    <span class="contact-value">Sheikh Zayed, Cairo, Egypt</span>
+                </div>
+            </div>
+
+            <div class="footer-newsletter fade-up">
+                <h4 class="footer-heading">Stay Connected</h4>
+                <p>Join our exclusive network for latest project launches.</p>
+                <form class="footer-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="footer-btn"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container bottom-content">
+                <p>&copy; 2025 Pins & Corners. Developed with Excellence.</p>
+                <div class="developer-credit">Designed by <span class="accent-text">Yaaalla</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Decorations -->
+    <div class="bottom-decorations">
+        <div class="curved-line curved-line-1"></div>
+        <div class="curved-line curved-line-2"></div>
+        <div class="watermark-ampersand">&</div>
+    </div>
+
+    <!-- Global Floating CTAs -->
+    <div class="floating-ctas">
+        <div class="cta-button cta-call" aria-label="Call Us">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="cta-button cta-whatsapp" aria-label="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="cta-button cta-chatbot" aria-label="Chat Bot">
+            <i class="fas fa-comment-dots"></i>
+            <span class="tooltip">Chat with us</span>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
