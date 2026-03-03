@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <!-- CSS -->
@@ -243,14 +243,6 @@
             z-index: -1;
         }
 
-        .service-block h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            letter-spacing: 0.1em;
-            font-weight: 300;
-            color: #FFFFFF;
-            text-transform: uppercase;
-        }
 
         .service-block p {
             color: rgba(255, 255, 255, 0.7);
@@ -368,16 +360,16 @@
         }
 
         .partner-logo {
-            filter: grayscale(1);
-            opacity: 0.7;
             transition: 300ms ease;
             cursor: pointer;
-            color: #FFFFFF;
-            font-family: var(--font-sans);
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
         }
 
         .news-grid {
@@ -657,16 +649,13 @@
             <span class="section-label">PARTNERS LIST</span>
             <div class="partners-list">
                 <div class="partner-logo fade-up">
-                    NUTSHELL&reg;
-                    <span>Branding Agency</span>
+                    <img src="logos/1.png" alt="NUTSHELL" style="height: 100px;">
                 </div>
                 <div class="partner-logo fade-up">
-                    MOHAMED TALAAT
-                    <span>ARCHITECTS &middot; Est. 1996</span>
+                    <img src="logos/2.webp" alt="MOHAMED TALAAT ARCHITECTS" style="height: 100px;">
                 </div>
                 <div class="partner-logo fade-up">
-                    SABBOUR CONSULTING
-                    <span>Since 1957</span>
+                    <img src="logos/3.png" alt="SABBOUR CONSULTING" style="height: 100px;">
                 </div>
             </div>
         </div>

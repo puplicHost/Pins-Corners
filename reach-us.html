@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;700&display=swap"
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css">
@@ -62,6 +62,7 @@
         /* Social Circles */
         .social-media-circles {
             display: flex;
+            justify-content: center;
             gap: 20px;
             margin-top: 30px;
         }
@@ -91,6 +92,7 @@
         /* Message Pills */
         .message-pills {
             display: flex;
+            justify-content: center;
             gap: 20px;
             margin-top: 30px;
         }
@@ -147,6 +149,40 @@
             border-color: var(--primary-accent);
         }
 
+        .contact-item-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: 300ms ease;
+            text-decoration: none;
+        }
+
+        .contact-item-link:hover {
+            color: var(--primary-accent);
+            transform: translateX(10px);
+        }
+
+        .contact-item-link i {
+            width: 45px;
+            height: 45px;
+            background: rgba(138, 52, 30, 0.1);
+            border: 1px solid rgba(138, 52, 30, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-accent);
+            font-size: 16px;
+            transition: 300ms ease;
+        }
+
+        .contact-item-link:hover i {
+            background: var(--primary-accent);
+            color: #FFFFFF;
+        }
+
         @media (max-width: 1024px) {
             .page-content {
                 grid-template-columns: 1fr;
@@ -193,47 +229,53 @@
                 <span class="section-label">CONTACT US</span>
                 <div class="contact-block">
                     <div class="contact-details">
-                        <p><strong>Address:</strong> Plots 23–25, Al Bostan Street, Sheikh Zayed City</p>
-                        <p><strong>Telephone:</strong> (+2) 385 11126 | (+2) 385 11136 | (+2) 385 11123 | (+2) 385 11124
-                        </p>
-                        <p><strong>Hotline:</strong> 17576</p>
-                        <p><strong>Email:</strong> info@pinsandcorners.com</p>
-                        <p><strong>Website:</strong> pinsandcorners.com</p>
+                        <a href="https://maps.google.com" target="_blank" class="contact-item-link">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Plots 23–25, Al Bostan Street, Sheikh Zayed City</span>
+                        </a>
+                        <a href="tel:17576" target="_blank" class="contact-item-link">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Hotline: 17576</span>
+                        </a>
+                        <a href="mailto:info@pinsandcorners.com" target="_blank" class="contact-item-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@pinsandcorners.com</span>
+                        </a>
+                        <a href="https://pinsandcorners.com" target="_blank" class="contact-item-link">
+                            <i class="fas fa-globe"></i>
+                            <span>www.pinsandcorners.com</span>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <section class="social-media-section fade-up">
+            <section class="social-media-section fade-up" style="text-align: center;">
                 <span class="section-label">SOCIAL MEDIA</span>
                 <div class="social-media-circles">
-                    <div class="social-circle">LN</div>
-                    <div class="social-circle">IG</div>
-                    <div class="social-circle">FB</div>
-                    <div class="social-circle">YT</div>
+                    <a href="https://linkedin.com" target="_blank" class="social-circle" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-circle" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-circle" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" class="social-circle" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </section>
 
-            <section class="message-us-section fade-up">
-                <span class="section-label" style="margin-top: 40px;">MESSAGE US</span>
-                <div class="message-pills">
-                    <button class="pill-btn pill-call">📞 CALL</button>
-                    <button class="pill-btn pill-whatsapp">💬 WHATSAPP</button>
-                </div>
-            </section>
 
-            <section class="team-cta fade-up">
-                <span class="section-label">JOIN OUR TEAM</span>
-                <p>"Share your CV — send to Info@pinsandcorners.com"</p>
-                <a href="mailto:Info@pinsandcorners.com">SUBMIT CV</a>
-            </section>
         </div>
 
         <!-- COLUMN 2: EOI FORM -->
         <div class="form-column">
             <section class="eoi-form-section fade-up">
                 <span class="section-label">ACQUIRE EOI</span>
-                <p class="eoi-description">"Submit your interest for retail, office, clinic or serviced apartment at
-                    WESTWIND."</p>
+                <p class="eoi-description">Directly submit your interest for retail spaces, premium offices, medical
+                    clinics, or luxury serviced apartments at WESTWIND.</p>
 
                 <form id="eoi-form">
                     <div class="form-field">
