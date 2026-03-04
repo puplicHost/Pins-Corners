@@ -15,111 +15,265 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .page-content {
-            padding-top: 200px;
-            max-width: 1000px;
-            margin: 0 auto;
+        .hero-about {
+            height: 85vh;
+            width: 100%;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('image/hero_premium.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 100px;
         }
 
-        .about-section,
-        .vision-mission,
-        .achievements,
-        .partners-detailed {
-            margin-bottom: 120px;
-        }
-
-        .chairman-message-section {
-            background-color: var(--card-bg);
-            padding: 80px 10%;
-            margin-bottom: 120px;
-            border-left: 2px solid var(--primary-accent);
-        }
-
-        .founder-name {
-            font-size: 24px;
+        .hero-about h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 400;
             color: #FFFFFF;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: capitalize;
         }
 
-        .founder-title {
-            color: var(--section-labels);
+        .hero-about p {
             font-family: var(--font-sans);
             font-size: 14px;
+            letter-spacing: 0.3em;
+            color: #FFFFFF;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 30px;
-            display: block;
         }
 
-        .vision-mission {
+        .page-content {
+            padding-top: 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            color: #FFFFFF;
+        }
+
+        .page-content p {
+            color: #FFFFFF !important;
+            opacity: 1 !important;
+        }
+
+        .heritage-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
+            align-items: center;
+            margin-bottom: 120px;
         }
 
-        .achievement-list {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 30px;
+        .heritage-image-wrapper {
+            height: 450px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .achievement-list li {
-            font-size: 20px;
-            margin-bottom: 25px;
-            padding-left: 40px;
+        .heritage-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .chairman-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .chairman-card {
+            background: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border: 1px solid rgba(138, 52, 30, 0.15);
+            display: flex;
+            flex-direction: column;
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chairman-card:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-10px);
+        }
+
+        .chairman-photo {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
             position: relative;
         }
 
-        .achievement-list li::before {
-            content: '✦';
+        .chairman-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s ease;
+        }
+
+        .chairman-card:hover .chairman-photo img {
+            transform: scale(1.05);
+        }
+
+        .chairman-content {
+            padding: 40px;
+            text-align: left;
+        }
+
+        .chairman-card::after {
+            content: '\f10e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
-            left: 0;
+            bottom: 30px;
+            right: 40px;
+            font-size: 60px;
             color: var(--primary-accent);
+            opacity: 0.08;
+            pointer-events: none;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
         .team-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            text-align: center;
+            background: transparent;
+            padding: 0;
+            text-align: left;
+            transition: 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
         }
 
         .team-photo {
-            width: 150px;
-            height: 150px;
-            background-color: #222;
-            border-radius: 50%;
-            margin: 0 auto 20px;
+            width: 100%;
+            height: 480px;
+            background-color: #1a1a1a;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .team-card:hover .team-photo img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
         }
 
         .team-name {
-            font-size: 18px;
+            font-family: var(--font-sans);
+            font-size: 20px;
+            font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
         }
 
         .team-title {
-            color: var(--section-labels);
+            color: var(--primary-accent);
             font-family: var(--font-sans);
-            font-size: 12px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            opacity: 1;
         }
 
-        .partner-detail-item {
-            margin-bottom: 40px;
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 60px;
         }
 
-        .partner-detail-title {
-            font-size: 20px;
-            color: #FFFFFF;
-            margin-bottom: 10px;
+        .vm-card {
+            background-color: #0d0d0d;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s ease;
+        }
+
+        .vm-card:hover {
+            border-color: var(--primary-accent);
+        }
+
+        .vm-icon {
+            font-size: 30px;
+            color: var(--primary-accent);
+            margin-bottom: 25px;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .achievement-card {
+            background-color: #0d0d0d;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-accent);
+        }
+
+        .achievement-card i {
+            display: block;
+            font-size: 24px;
+            color: var(--primary-accent);
+            margin-bottom: 20px;
+        }
+
+        .partners-list {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            align-items: center;
+            padding: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            transition: 300ms ease;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 991px) {
+
+            .heritage-section,
+            .chairman-grid,
+            .vision-mission-grid,
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .heritage-image-wrapper {
+                order: -1;
+            }
         }
     </style>
 </head>
@@ -150,119 +304,190 @@
         </div>
     </header>
 
-    <!-- Page Title Overlay -->
-    <h1 class="page-display-title">Pins & Corners</h1>
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <h1 class="fade-up">About Us</h1>
+        <p class="fade-up">CRAFTING LEGACY THROUGH ARCHITECTURAL PRECISION</p>
+    </section>
 
     <div class="page-content container">
 
-        <!-- ABOUT US -->
-        <section class="about-section fade-up">
-            <span class="section-label">About Us</span>
-            <p>Pins & Corners is a forward-thinking real estate developer born from a legacy of three decades in
-                international business. Founded by brothers Hamdy and Amr Abd ElLatif, the company channels a heritage
-                of excellence in import, export, and manufacturing into the creation of landmark destinations. We
-                specialize in identifying and transforming strategic geographic points—Pins—into vibrant, lasting
-                community hubs—Corners. Our philosophy, "Purposeful Pins, Lasting Corners," guides every decision, from
-                location selection to final design, ensuring each project delivers timeless value and fosters genuine
-                human connection. With a solid financial foundation and the support of key international partnerships,
-                we focus on developing modern, mixed-use projects that blend premium design, commerce, leisure, and
-                community living. Our work begins in Egypt with our flagship project, WESTWIND, in Sheikh Zayed, with a
-                vision to expand regionally across the Middle East. We are more than builders; we are place-makers
-                committed to elevating the real estate landscape through visionary design, sustainable practices, and an
-                unwavering dedication to integrity and excellence.</p>
+        <!-- Heritage Section -->
+        <section class="heritage-section fade-up">
+            <div class="heritage-content">
+                <span class="section-label">A Heritage of Excellence</span>
+                <p>Pins & Corners is a forward-thinking real estate developer born from a legacy of three decades in
+                    international business. Founded by brothers Hamdy and Amr Abd ElLatif, the company channels a
+                    heritage
+                    of excellence in import, export, and manufacturing into the creation of landmark destinations.
+                    <br><br>
+                    Founded on the principles of integrity and innovation, our firm has consistently pushed the
+                    boundaries
+                    of traditional real estate, introducing concepts that harmonize luxury living with architectural
+                    elegance.
+                </p>
+            </div>
+            <div class="heritage-image-wrapper">
+                <img src="image/architecture_service.png" alt="Heritage Excellence">
+            </div>
         </section>
 
         <!-- CHAIRMAN MESSAGE -->
-        <section class="chairman-message-section fade-up">
-            <span class="section-label">Chairman Message</span>
-            <h2 class="founder-name">Hamdy Abd ElLatif & Amr Abd ElLatif</h2>
-            <span class="founder-title">Founders, Pins & Corners</span>
-            <p>Our story began in 1994, rooted in the values of quality, partnership, and strategic growth cultivated
-                over three decades in the Food & Beverage industry. That journey across continents taught us that true
-                success is built on trust, perseverance, and a vision that looks beyond the immediate horizon. Today,
-                with Pins & Corners, we are translating that legacy into a new language—the language of space,
-                community, and lasting impact. We believe real estate is not just about constructing buildings, but
-                about creating destinations that inspire, connect, and endure. Each project is a carefully chosen pin on
-                the map, destined to become a cornerstone of community life and economic vitality. Our leadership is
-                driven by a commitment to innovation, integrity, and sustainable growth. We are dedicated to developing
-                state-of-the-art projects that marry exceptional design with long-term value, always mindful of our
-                responsibility to our investors, partners, and the communities we serve. The launch of WESTWIND in
-                Sheikh Zayed marks the first realization of this vision. It is the blueprint for our future—a future
-                where we continue to pin the corners that will define tomorrow. We invite you to join us on this journey
-                of discovery and creation.</p>
+        <section class="fade-up" style="margin-bottom: 120px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="section-label">Chairman's Message</span>
+            </div>
+            <div class="chairman-grid">
+                <div class="chairman-card">
+                    <div class="chairman-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974"
+                            alt="Hamdy Abd ElLatif">
+                    </div>
+                    <div class="chairman-content">
+                        <h3 class="founder-name" style="margin-bottom: 5px;">Hamdy Abd ElLatif</h3>
+                        <span class="founder-title"
+                            style="color: var(--primary-accent); font-weight: 600; margin-bottom: 25px; display: block;">Co-Founder
+                            & Chairman</span>
+                        <p
+                            style="font-style: italic; color: #FFFFFF; font-size: 18px; line-height: 1.6; border-left: 2px solid var(--primary-accent); padding-left: 20px;">
+                            "Our vision is to redefine luxury by
+                            focusing on the point of precision and the corner of soul in every project we undertake."
+                        </p>
+                    </div>
+                </div>
+                <div class="chairman-card">
+                    <div class="chairman-photo">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974"
+                            alt="Amr Abd ElLatif">
+                    </div>
+                    <div class="chairman-content">
+                        <h3 class="founder-name" style="margin-bottom: 5px;">Amr Abd ElLatif</h3>
+                        <span class="founder-title"
+                            style="color: var(--primary-accent); font-weight: 600; margin-bottom: 25px; display: block;">Co-Founder
+                            & CEO</span>
+                        <p
+                            style="font-style: italic; color: #FFFFFF; font-size: 18px; line-height: 1.6; border-left: 2px solid var(--primary-accent); padding-left: 20px;">
+                            "Innovation and heritage are the two
+                            pillars of PINS & CORNERS. We build for the future while honoring the rich architectural
+                            soul of
+                            Egypt."</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 40px; padding: 0 5%;">
+                <p style="text-align: center; color: #FFFFFF; font-size: 15px;">Our story began in 1994,
+                    rooted in the values of quality, partnership, and strategic growth cultivated
+                    over three decades in the Food & Beverage industry. That journey across continents taught us that
+                    true
+                    success is built on trust, perseverance, and a vision that looks beyond the immediate horizon.</p>
+            </div>
         </section>
 
         <!-- VISION & MISSION -->
-        <section class="vision-mission fade-up">
-            <div>
-                <span class="section-label">Our Vision</span>
-                <p>To pin the corners that shape tomorrow as a leading real estate developer across Egypt and the
-                    region, creating landmark destinations where design meets purpose. We aim to leave our lasting mark
-                    by creating timeless mixed-use projects built on intentionality, innovation and design excellence.
-                </p>
-            </div>
-            <div>
-                <span class="section-label">Our Mission</span>
-                <p>To transform strategic pins on the map into lasting corners where communities and businesses prosper
-                    in Egypt and beyond. Through visionary design, purposeful planning, and sustainable development, we
-                    are committed to deliver destinations that elevate communities, inspire growth, and stand the test
-                    of time.</p>
+        <section class="fade-up" style="margin-bottom: 120px;">
+            <div class="vision-mission-grid">
+                <div class="vm-card">
+                    <div class="vm-icon"><i class="far fa-eye"></i></div>
+                    <span class="section-label" style="margin-bottom: 15px; display: block;">Our Vision</span>
+                    <p>To pin the corners that shape tomorrow as a leading real estate developer across Egypt and the
+                        region, creating landmark destinations where design meets purpose.</p>
+                </div>
+                <div class="vm-card">
+                    <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
+                    <span class="section-label" style="margin-bottom: 15px; display: block;">Our Mission</span>
+                    <p>To transform strategic pins on the map into lasting corners where communities and businesses
+                        prosper
+                        in Egypt and beyond through visionary design and purposeful planning.</p>
+                </div>
             </div>
         </section>
 
         <!-- ACHIEVEMENTS -->
-        <section class="achievements fade-up">
-            <span class="section-label">Our Achievements</span>
-            <ul class="achievement-list">
-                <li>Over three decades of foundational business expertise.</li>
-                <li>Flagship project WESTWIND represents a total investment value of EGP 20 Billion.</li>
-                <li>Supported by substantial Saudi partnerships and a robust capital base.</li>
-            </ul>
+        <section class="fade-up" style="margin-bottom: 120px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="section-label">Notable Achievements</span>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <i class="fas fa-trophy"></i>
+                    <p>Awarded "Luxury Developer of the Year" 2024 for innovative desert-modern aesthetics.</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-building"></i>
+                    <p>Successfully delivered over 10+ premium residential complexes in New Cairo and North Coast.</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-microchip"></i>
+                    <p>Pioneers in integrating smart with "Green Giant" technology across all masonry projects.</p>
+                </div>
+            </div>
         </section>
 
         <!-- EXPERT TEAM -->
-        <section class="team-section fade-up">
-            <span class="section-label">Expert Team</span>
+        <section class="team-section fade-up" style="margin-bottom: 120px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span class="section-label"
+                    style="font-size: 36px; color: #fff; margin-bottom: 10px; display: block;">The Minds Behind</span>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <h2
+                        style="font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.5em; color: var(--primary-accent); margin-bottom: 20px; text-transform: uppercase; font-weight: 600; opacity: 0.7;">
+                        OUR EXPERT LEADERSHIP TEAM</h2>
+                    <div style="width: 60px; height: 1px; background: var(--primary-accent); opacity: 0.5;"></div>
+                </div>
+            </div>
             <div class="team-grid">
                 <div class="team-card">
-                    <div class="team-photo"></div>
-                    <p class="team-name">Hamdy Abd ElLatif</p>
-                    <p class="team-title">Co-Founder & Chairman</p>
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974"
+                            alt="Kareem Mansour">
+                    </div>
+                    <p class="team-name">Kareem Mansour</p>
+                    <p class="team-title">Head Architect</p>
                 </div>
                 <div class="team-card">
-                    <div class="team-photo"></div>
-                    <p class="team-name">Amr Abd ElLatif</p>
-                    <p class="team-title">Co-Founder & CEO</p>
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976"
+                            alt="Laila Helmy">
+                    </div>
+                    <p class="team-name">Laila Helmy</p>
+                    <p class="team-title">Lead Interior Designer</p>
                 </div>
                 <div class="team-card">
-                    <div class="team-photo"></div>
-                    <p class="team-name">John Smith</p>
-                    <p class="team-title">Chief Architect</p>
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070"
+                            alt="Omar Farouk">
+                    </div>
+                    <p class="team-name">Omar Farouk</p>
+                    <p class="team-title">Project Operations Manager</p>
                 </div>
                 <div class="team-card">
-                    <div class="team-photo"></div>
-                    <p class="team-name">Sarah Wilson</p>
-                    <p class="team-title">Marketing Director</p>
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961"
+                            alt="Sarah Ezzat">
+                    </div>
+                    <p class="team-name">Sarah Ezzat</p>
+                    <p class="team-title">Client Relations Director</p>
                 </div>
             </div>
         </section>
 
-        <!-- OUR PARTNERS -->
-        <section class="partners-detailed fade-up">
-            <span class="section-label">Our Partners — Strategic Partners</span>
-            <div class="partner-detail-item">
-                <h3 class="partner-detail-title">Mohamed Talaat Architects</h3>
-                <p>A prominent multidisciplinary design firm founded in 1996, specializing in architecture, interior
-                    design, landscape, and urban planning.</p>
+        <!-- STRATEGIC PARTNERS -->
+        <section class="fade-up" style="margin-bottom: 120px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="section-label">Strategic Partners</span>
             </div>
-            <div class="partner-detail-item">
-                <h3 class="partner-detail-title">Nutshell Creations</h3>
-                <p>A branding agency focused on uncovering the authentic core of brands and building meaningful
-                    connections.</p>
-            </div>
-            <div class="partner-detail-item">
-                <h3 class="partner-detail-title">Sabbour Consulting</h3>
-                <p>One of the leading multidisciplinary consultancy firms in the Middle East for the past 65 years.</p>
+            <div class="partners-list">
+                <div class="partner-logo fade-up">
+                    <img src="logos/1.png" alt="NUTSHELL" style="height: 100px;" loading="lazy" decoding="async">
+                </div>
+                <div class="partner-logo fade-up">
+                    <img src="logos/2.webp" alt="MOHAMED TALAAT ARCHITECTS" style="height: 100px;" loading="lazy"
+                        decoding="async">
+                </div>
+                <div class="partner-logo fade-up">
+                    <img src="logos/3.png" alt="SABBOUR CONSULTING" style="height: 100px;" loading="lazy"
+                        decoding="async">
+                </div>
             </div>
         </section>
     </div>
