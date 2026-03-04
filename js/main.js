@@ -49,4 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
         });
     }
+
+    // Video Gallery Hover Play
+    document.querySelectorAll('.video-item').forEach(item => {
+        const video = item.querySelector('video');
+        if (video) {
+            item.addEventListener('mouseenter', () => {
+                video.play();
+            });
+            item.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+            item.addEventListener('click', () => {
+                const videoSrc = video.querySelector('source').getAttribute('src');
+                window.open(videoSrc, '_blank');
+            });
+        }
+    });
+
+    // Image Load Fade-in
+    const galleryImages = document.querySelectorAll('.photo-item img');
+    galleryImages.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+        }
+    });
 });
