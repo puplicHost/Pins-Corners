@@ -16,15 +16,239 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .page-content {
-            padding-top: 150px;
+            padding-top: 60px;
         }
 
-        .news-section {
-            margin-bottom: 120px;
+        /* News Hero */
+        .news-hero {
+            padding: 120px 5vw 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        .article-card {
+        .news-hero-left {
+            max-width: 500px;
+        }
+
+        .news-hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(50px, 8vw, 85px);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        .news-hero-desc {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .news-hero-right {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* Modern News Grid */
+        .modern-news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .news-card-modern {
+            background-color: #0d0d0d;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .news-card-modern:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .news-img-box {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+
+        .news-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1);
+            transition: 0.5s ease;
+        }
+
+        .news-card-modern:hover .news-img-box img {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        .news-card-body {
+            padding: 35px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card-date {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .news-card-title {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .news-card-text {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
             margin-bottom: 30px;
+        }
+
+        .news-read-more {
+            margin-top: auto;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .news-read-more:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Inner Circle Section */
+        .inner-circle-section {
+            background-color: #080808;
+            padding: 80px 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-radius: 4px;
+        }
+
+        .inner-circle-left h2 {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .inner-circle-left p {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .inner-circle-form {
+            display: flex;
+            gap: 0;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .inner-circle-form input {
+            flex-grow: 1;
+            background-color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 14px;
+        }
+
+        .inner-circle-form button {
+            background-color: var(--primary-accent);
+            color: #FFFFFF;
+            border: none;
+            padding: 0 40px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .inner-circle-form button:hover {
+            background-color: var(--accent-dark);
+        }
+
+        @media screen and (max-width: 1100px) {
+            .modern-news-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .modern-news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-hero {
+                align-items: flex-start;
+            }
+
+            .inner-circle-section {
+                padding: 40px 30px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .inner-circle-form {
+                flex-direction: column;
+            }
+
+            .inner-circle-form button {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -55,62 +279,87 @@
         </div>
     </header>
 
-    <!-- Page Title Overlay -->
-    <h1 class="page-display-title">Our News</h1>
+    <div class="page-content">
 
-    <div class="page-content container">
-
-        <!-- PRESS SECTION -->
-        <section class="news-section fade-up">
-            <span class="section-label">PRESS</span>
-            <div class="news-grid">
-                <!-- Row 1 -->
-                <div class="article-card fade-up">
-                    <span class="article-date">March 02, 2025</span>
-                    <h3 class="article-headline">PINS & CORNERS Announces WESTWIND Groundbreaking</h3>
-                    <p class="article-excerpt">The EGP 20 Billion flagship project kicks off its construction phase in
-                        Sheikh Zayed with a vision to redefine the district's urban fabric.</p>
-                    <a href="#" class="read-more">Read More &rarr;</a>
-                </div>
-                <div class="article-card fade-up">
-                    <span class="article-date">February 20, 2025</span>
-                    <h3 class="article-headline">The Architectural Philosophy Behind Egypt's Desert Ventifacts</h3>
-                    <p class="article-excerpt">How Mohamed Talaat Architects and PINS & CORNERS are drawing inspiration
-                        from nature to create fluid, lasting landmarks.</p>
-                    <a href="#" class="read-more">Read More &rarr;</a>
-                </div>
-                <div class="article-card fade-up">
-                    <span class="article-date">February 05, 2025</span>
-                    <h3 class="article-headline">Expanding Regional Horizons: Future Pins Across the Middle East</h3>
-                    <p class="article-excerpt">Founders Hamdy and Amr Abd ElLatif detail their strategic roadmap for
-                        regional expansion beyond the flagship WESTWIND project.</p>
-                    <a href="#" class="read-more">Read More &rarr;</a>
-                </div>
-
-                <!-- Row 2 -->
-                <div class="article-card fade-up">
-                    <span class="article-date">January 25, 2025</span>
-                    <h3 class="article-headline">Sustainability in Luxury: The Urban Oasis Concept</h3>
-                    <p class="article-excerpt">Redefining the relationship between high-end retail, office spaces, and
-                        natural landscapes through sustainable design practices.</p>
-                    <a href="#" class="read-more">Read More &rarr;</a>
-                </div>
-                <div class="article-card fade-up">
-                    <span class="article-date">January 10, 2024</span>
-                    <h3 class="article-headline">Three Decades of Excellence: From F&B to Real Estate</h3>
-                    <p class="article-excerpt">How a heritage of international trade and manufacturing informs the core
-                        values of integrity and excellence at PINS & CORNERS.</p>
-                    <a href="#" class="read-more">Read More &rarr;</a>
-                </div>
-                <div class="article-card fade-up">
-                    <span class="article-date">December 15, 2024</span>
-                    <h3 class="article-headline">Strategic Partnership with Sabbour Consulting Revealed</h3>
-                    <p class="article-excerpt">Leveraging 65 years of consultancy expertise to ensure the structural and
-                        operational excellence of Westwind.</p>
-                    <a href="#" class="read-more">Read More &rarr;</a>
-                </div>
+        <!-- NEWS HERO -->
+        <section class="news-hero fade-up">
+            <div class="news-hero-left">
+                <h1 class="news-hero-title">OUR NEWS</h1>
+                <p class="news-hero-desc">
+                    Insights into Egypt's premier architectural landscapes and corporate milestones from Pins & Corners.
+                </p>
+            </div>
+            <div class="news-hero-right">
+                ARCHIVE 2023 — 2024
             </div>
         </section>
+
+        <div class="container" style="max-width: 1300px; padding: 0 5vw;">
+
+            <!-- NEWS GRID SECTION -->
+            <div class="modern-news-grid">
+                <!-- Article 1 -->
+                <div class="news-card-modern fade-up">
+                    <div class="news-img-box">
+                        <img src="image/architecture_service.png" alt="News 1">
+                    </div>
+                    <div class="news-card-body">
+                        <span class="news-card-date">OCTOBER 24, 2023</span>
+                        <h3 class="news-card-title">New Luxury Development in New Cairo</h3>
+                        <p class="news-card-text">
+                            Explore our latest residential masterpiece featuring modern dark aesthetics, premium
+                            amenities, and sustainable urban design.
+                        </p>
+                        <a href="#" class="news-read-more">READ MORE &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="news-card-modern fade-up">
+                    <div class="news-img-box">
+                        <img src="image/interior_service.png" alt="News 2">
+                    </div>
+                    <div class="news-card-body">
+                        <span class="news-card-date">SEPTEMBER 12, 2023</span>
+                        <h3 class="news-card-title">Pins & Corners Wins Architectural Excellence Award</h3>
+                        <p class="news-card-text">
+                            Recognized for our unwavering commitment to quality and innovative structural design in the
+                            heart of Egypt's capital.
+                        </p>
+                        <a href="#" class="news-read-more">READ MORE &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="news-card-modern fade-up">
+                    <div class="news-img-box">
+                        <img src="image/news_skyline.png" alt="News 3">
+                    </div>
+                    <div class="news-card-body">
+                        <span class="news-card-date">AUGUST 05, 2023</span>
+                        <h3 class="news-card-title">The Future of Premium Real Estate in Egypt</h3>
+                        <p class="news-card-text">
+                            An in-depth analysis of market trends and how we are shaping the landscape of luxury living
+                            through technology.
+                        </p>
+                        <a href="#" class="news-read-more">READ MORE &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEWSLETTER SECTION -->
+            <section class="inner-circle-section fade-up">
+                <div class="inner-circle-left">
+                    <h2>Join the Inner Circle</h2>
+                    <p>Receive exclusive project launches and investment opportunities.</p>
+                </div>
+                <form class="inner-circle-form">
+                    <input type="email" placeholder="Email Address" required>
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+            </section>
+
+        </div>
 
     </div>
 
@@ -146,7 +395,7 @@
                     <li><a href="pins-corners.html">Pins & Corners</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="media-center.html">Media Center</a></li>
-                    <li><a href="our-news.html">Our News</a></li>
+                    <li><a href="our-news.html" class="active">Our News</a></li>
                     <li><a href="reach-us.html">Reach Us</a></li>
                 </ul>
             </div>
@@ -178,8 +427,8 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="container bottom-content">
-                <p>&copy; 2026 Pins & Corners. Developed with Excellence.</p>
+            <div class="container bottom-content" style="max-width: 1300px; padding: 0 5vw;">
+                <p>&copy; 2026 Pins & Corners. All Rights Reserved.</p>
                 <div class="developer-credit">Designed by <span class="accent-text">Yaaalla</span></div>
             </div>
         </div>
