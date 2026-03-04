@@ -26,24 +26,38 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 100px;
+        }
+
+        .hero-about-content {
+            width: 100%;
+            max-width: 1300px;
+            padding: 0 5vw;
+            margin: 0 auto;
         }
 
         .hero-about h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(40px, 8vw, 80px);
+            font-family: var(--font-sans);
+            font-size: 13px;
             font-weight: 400;
             color: #FFFFFF;
-            margin-bottom: 20px;
-            text-transform: capitalize;
+            margin-top: 20px;
+            text-transform: uppercase;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.6em;
+            line-height: 1.8;
+            opacity: 0.8;
         }
 
         .hero-about p {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            letter-spacing: 0.3em;
+            font-family: var(--font-serif);
+            font-size: clamp(60px, 12vw, 120px);
+            letter-spacing: 0.02em;
             color: #FFFFFF;
-            text-transform: uppercase;
+            text-transform: capitalize;
+            margin-bottom: 0;
+            line-height: 1;
         }
 
         .page-content {
@@ -306,8 +320,10 @@
 
     <!-- Hero Section -->
     <section class="hero-about">
-        <h1 class="fade-up">About Us</h1>
-        <p class="fade-up">CRAFTING LEGACY THROUGH ARCHITECTURAL PRECISION</p>
+        <div class="hero-about-content">
+            <p class="fade-up">About Us</p>
+            <h1 class="fade-up">CRAFTING LEGACY THROUGH ARCHITECTURAL PRECISION</h1>
+        </div>
     </section>
 
     <div class="page-content container">
