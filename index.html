@@ -24,16 +24,16 @@
         /* Home Page Specifics */
         /* 2026 Professional Hero Design */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             position: relative;
-            background: var(--bg-color);
+            background: url('image/hero_premium.png') no-repeat center center;
+            background-size: cover;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             overflow: hidden;
-            padding-top: 200px;
-            /* Offset to clear fixed header with extra breathing room */
+            padding: 120px 5% 60px;
         }
 
         /* Ambient Identity Glow */
@@ -81,8 +81,51 @@
             max-width: 90%;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: left;
+            padding-left: 5%;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+
+        .hero-btn-solid {
+            padding: 15px 40px;
+            background-color: var(--primary-accent);
+            color: #FFFFFF;
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 0.1em;
+            transition: 0.3s ease;
+        }
+
+        .hero-btn-solid:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+        }
+
+        .hero-btn-outline {
+            padding: 15px 40px;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #FFFFFF;
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 0.1em;
+            transition: 0.3s ease;
+        }
+
+        .hero-btn-outline:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+            transform: translateY(-3px);
         }
 
         .hero-logo-container {
@@ -135,20 +178,52 @@
             animation: fadeInUp 1.5s ease-out 0.8s forwards;
         }
 
+        @media (max-width: 991px) {
+            .hero {
+                justify-content: center;
+                text-align: center;
+                padding-top: 150px;
+            }
+
+            .hero-content {
+                align-items: center;
+                text-align: center;
+                padding-left: 0;
+                width: 100%;
+            }
+
+            .hero-btns {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero {
-                padding-top: 120px;
-                height: auto;
                 min-height: 100vh;
-                padding-bottom: 80px;
+                height: auto;
+                padding: 140px 20px 80px;
+            }
+
+            .hero-title {
+                font-size: clamp(32px, 12vw, 54px);
+                line-height: 1.2;
             }
 
             .hero-logo {
-                width: 200px;
+                width: 180px;
             }
 
             .hero-text {
                 font-size: 15px;
+                margin-bottom: 30px;
+            }
+
+            .hero-btn-solid,
+            .hero-btn-outline {
+                width: 100%;
+                padding: 12px 25px;
+                font-size: 14px;
             }
         }
 
@@ -492,22 +567,73 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-logo-container">
-                <img src="image/logo.png" alt="PINS & CORNERS Logo" class="hero-logo">
-            </div>
+
             <h1 class="hero-title">
-                <span>Purposeful Pins</span>
+
                 Lasting Corners
             </h1>
             <p class="hero-text">
                 Luxury real estate developer creating landmark destinations through sophisticated architecture and
                 deep-rooted design philosophy.
             </p>
+            <div class="hero-btns">
+                <a href="projects.html" class="hero-btn-solid">EXPLORE PROJECTS</a>
+                <a href="pins-corners.html" class="hero-btn-outline">OUR STORY</a>
+            </div>
         </div>
         <div class="scroll-indicator">
             <div class="scroll-line"></div>
         </div>
     </section>
+
+    <section class="latest-news-section">
+        <div class="container">
+            <span class="section-label">Latest News</span>
+            <div class="news-grid">
+                <div class="article-card fade-up">
+                    <div class="article-image-wrapper">
+                        <img src="image/news_skyline.png" alt="Skyline" class="article-image" loading="lazy"
+                            decoding="async">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">March 02, 2025</span>
+                        <h3 class="article-headline">The Future of Sheikh Zayed's Skyline</h3>
+                        <p class="article-excerpt">Exploring how WESTWIND is redefining accessibility and architectural
+                            excellence in Egypt's most vibrant district.</p>
+                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="article-card fade-up">
+                    <div class="article-image-wrapper">
+                        <img src="image/news_sustainable.png" alt="Sustainable Desert Design" class="article-image"
+                            loading="lazy" decoding="async">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">February 15, 2025</span>
+                        <h3 class="article-headline">Sustainable Design in Desert Landscapes</h3>
+                        <p class="article-excerpt">How PINS & CORNERS integrates natural elements to create lasting
+                            community corners.</p>
+                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="article-card fade-up">
+                    <div class="article-image-wrapper">
+                        <img src="image/interior_service.png" alt="Partnerships" class="article-image" loading="lazy"
+                            decoding="async">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">January 20, 2025</span>
+                        <h3 class="article-headline">Strategic International Partnerships</h3>
+                        <p class="article-excerpt">A look into our collaborations with world-class consultants to
+                            deliver
+                            EGP 20 Billion flagship projects.</p>
+                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Services Section -->
     <section class="services-section">
@@ -522,16 +648,15 @@
                         reminiscent of sand dunes, creating a sense of movement and harmony with the environment.</p>
                 </div>
                 <div class="service-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-                        alt="Architecture inspired by desert dunes" class="service-image" loading="lazy"
-                        decoding="async">
+                    <img src="image/architecture_service.png" alt="Architecture inspired by desert dunes"
+                        class="service-image" loading="lazy" decoding="async">
                 </div>
             </div>
 
             <div class="service-block fade-up">
                 <div class="service-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
-                        alt="Premium interior and urban design" class="service-image" loading="lazy" decoding="async">
+                    <img src="image/interior_service.png" alt="Premium interior and urban design" class="service-image"
+                        loading="lazy" decoding="async">
                 </div>
                 <div class="service-content">
                     <span class="section-label">Interior & Urban Design</span>
@@ -561,67 +686,13 @@
         </div>
     </section>
 
-    <!-- Projects Teaser Section -->
-    <section class="projects-teaser fade-up">
-        <div class="container teaser-content">
-            <span class="section-label">Projects</span>
-            <p>Our very first pinned corner lies in the vibrant heart of Sheikh Zayed. Nestled along El Bostan Road,
-                Zayed's liveliest artery, this prime location stands at the intersection of accessibility and
-                visibility, making it the perfect cradle for our debut project WESTWIND.</p>
-        </div>
-    </section>
+
 
     <!-- Latest News Section -->
-    <section class="latest-news-section">
-        <div class="container">
-            <span class="section-label">Latest News</span>
-            <div class="news-grid">
-                <div class="article-card fade-up">
-                    <div class="article-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-                            alt="Skyline" class="article-image" loading="lazy" decoding="async">
-                    </div>
-                    <div class="article-content">
-                        <span class="article-date">March 02, 2025</span>
-                        <h3 class="article-headline">The Future of Sheikh Zayed's Skyline</h3>
-                        <p class="article-excerpt">Exploring how WESTWIND is redefining accessibility and architectural
-                            excellence in Egypt's most vibrant district.</p>
-                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
-                    </div>
-                </div>
-                <div class="article-card fade-up">
-                    <div class="article-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop"
-                            alt="Sustainable Desert Design" class="article-image" loading="lazy" decoding="async">
-                    </div>
-                    <div class="article-content">
-                        <span class="article-date">February 15, 2025</span>
-                        <h3 class="article-headline">Sustainable Design in Desert Landscapes</h3>
-                        <p class="article-excerpt">How PINS & CORNERS integrates natural elements to create lasting
-                            community corners.</p>
-                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
-                    </div>
-                </div>
-                <div class="article-card fade-up">
-                    <div class="article-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
-                            alt="Partnerships" class="article-image" loading="lazy" decoding="async">
-                    </div>
-                    <div class="article-content">
-                        <span class="article-date">January 20, 2025</span>
-                        <h3 class="article-headline">Strategic International Partnerships</h3>
-                        <p class="article-excerpt">A look into our collaborations with world-class consultants to
-                            deliver
-                            EGP 20 Billion flagship projects.</p>
-                        <a href="our-news.html" class="read-more">Read More &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Client Testimonials Section -->
-    <section class="testimonials-section">
+    <!-- <section class="testimonials-section">
         <div class="container">
             <span class="section-label">Client Testimonials</span>
             <div class="testimonials-grid">
@@ -642,7 +713,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Partners Section -->
     <section class="partners-section">
