@@ -51,10 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Video Gallery Hover Play
-    document.querySelectorAll('.video-item').forEach(item => {
+    document.querySelectorAll('.video-item, .video-card-modern').forEach(item => {
         const video = item.querySelector('video');
         if (video) {
             item.addEventListener('mouseenter', () => {
+                video.style.opacity = '1';
                 video.play();
             });
             item.addEventListener('mouseleave', () => {

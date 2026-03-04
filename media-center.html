@@ -16,141 +16,292 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .page-content {
-            padding-top: 150px;
+            padding-top: 60px;
         }
 
-        .gallery-section {
-            margin-bottom: 120px;
-        }
-
-        /* Photo Gallery - Masonry Style */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 250px;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .photo-item {
-            background-color: var(--card-bg);
-            overflow: hidden;
+        /* Media Hero */
+        .media-hero {
+            padding: 120px 5vw 60px;
+            max-width: 1300px;
+            margin: 0 auto;
             position: relative;
-            cursor: pointer;
         }
 
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 500ms ease;
-            opacity: 0;
-            /* Start hidden for smooth fade in */
+        .media-hero-title {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        .photo-item img.loaded {
-            opacity: 0.8;
+        .media-hero-title .white-text {
+            display: block;
+            font-size: clamp(60px, 10vw, 100px);
+            color: #FFFFFF;
         }
 
-        .photo-item:hover img.loaded {
-            transform: scale(1.1);
-            opacity: 1;
+        .media-hero-title .accent-text {
+            display: block;
+            font-size: clamp(60px, 10vw, 100px);
+            color: var(--primary-accent);
         }
 
-        /* Fallback if JS takes too long */
-        .photo-item img {
-            transition: opacity 800ms ease, transform 500ms ease;
+        .media-hero-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .photo-item.wide {
-            grid-column: span 2;
+        .media-hero-desc {
+            max-width: 450px;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
         }
 
-        .photo-item.tall {
-            grid-row: span 2;
+        .media-tabs {
+            display: flex;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
         }
 
-        /* Video Gallery - 2x2 Grid */
-        .video-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .video-item {
-            background-color: var(--card-bg);
-            height: 400px;
+        .media-tab {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            text-transform: uppercase;
             position: relative;
-            overflow: hidden;
-            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .video-preview {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 500ms ease;
-            filter: brightness(0.7);
+        .media-tab.active {
+            color: var(--primary-accent);
         }
 
-        .video-overlay {
+        .media-tab.active::after {
+            content: '';
             position: absolute;
-            top: 0;
+            bottom: -16px;
             left: 0;
             width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.2);
-            transition: 400ms ease;
+            height: 2px;
+            background-color: var(--primary-accent);
         }
 
-        .video-item:hover .video-preview {
-            filter: brightness(1);
+        /* Section Header */
+        .gallery-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-top: 60px;
+        }
+
+        .gallery-section-title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        .gallery-section-title::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-accent);
+        }
+
+        .view-all-link {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .view-all-link:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Asymmetrical Photo Grid */
+        .photo-asym-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .photo-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .gallery-img-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+
+        .gallery-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-img-wrapper:hover img {
             transform: scale(1.05);
         }
 
-        .video-item:hover .video-overlay {
-            background: rgba(0, 0, 0, 0);
+        /* Specific heights to match image */
+        .h-portrait {
+            height: 450px;
         }
 
-        .play-button {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary-accent);
+        .h-landscape {
+            height: 320px;
+        }
+
+        .h-tall {
+            height: 550px;
+        }
+
+        .h-square {
+            height: 400px;
+        }
+
+        /* Video Gallery */
+        .video-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 120px;
+        }
+
+        .video-card-modern {
+            cursor: pointer;
+        }
+
+        .video-thumb-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background-color: #000;
+        }
+
+        .video-thumb-container img,
+        .video-thumb-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .video-thumb-container video {
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .video-card-modern:hover .video-thumb-container video {
+            opacity: 1;
+        }
+
+        .play-btn-modern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(138, 52, 30, 0.9);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #FFFFFF;
-            font-size: 24px;
-            box-shadow: 0 10px 30px rgba(138, 52, 30, 0.4);
-            transition: 300ms ease;
+            font-size: 18px;
+            transition: 0.3s;
+            z-index: 2;
         }
 
-        .play-button::before {
-            content: '';
-            border-left: 15px solid #FFFFFF;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            margin-left: 5px;
+        .video-card-modern:hover .play-btn-modern {
+            background-color: var(--primary-accent);
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
-        .video-item:hover .play-button {
-            transform: scale(1.1);
-            background-color: var(--accent-dark);
+        .video-meta-label {
+            font-family: var(--font-sans);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .video-title {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: #FFFFFF;
+        .video-card-title {
             font-family: var(--font-serif);
-            font-size: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 1.2;
+        }
+
+        @media screen and (max-width: 991px) {
+            .photo-asym-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .video-grid-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .photo-asym-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .media-hero-flex {
+                align-items: flex-start;
+            }
+
+            .media-hero-flex h1 {
+                margin-bottom: 10px;
+            }
+
+            .media-hero-desc {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -181,115 +332,121 @@
         </div>
     </header>
 
-    <!-- Page Title Overlay -->
-    <h1 class="page-display-title">Media Center</h1>
+    <div class="page-content">
 
-    <div class="page-content container">
+        <!-- MEDIA HERO -->
+        <section class="media-hero fade-up">
+            <div class="media-hero-flex">
+                <h1 class="media-hero-title">
+                    <span class="white-text">MEDIA</span>
+                    <span class="accent-text">CENTER</span>
+                </h1>
+                <p class="media-hero-desc">
+                    Exploring the architectural heritage and future of Egyptian luxury living.
+                </p>
+            </div>
 
-        <!-- PHOTO GALLERY -->
-        <section class="gallery-section fade-up">
-            <span class="section-label">Photo Gallery</span>
-            <div class="photo-gallery">
-                <div class="photo-item wide fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00002.webp"
-                        alt="Pins & Corners Media 01" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item tall fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00003.webp"
-                        alt="Pins & Corners Media 02" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00004.webp"
-                        alt="Pins & Corners Media 03" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00005.webp"
-                        alt="Pins & Corners Media 04" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item wide fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00006.webp"
-                        alt="Pins & Corners Media 05" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00007.webp"
-                        alt="Pins & Corners Media 06" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item tall fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00008.webp"
-                        alt="Pins & Corners Media 07" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00009.webp"
-                        alt="Pins & Corners Media 08" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00010.webp"
-                        alt="Pins & Corners Media 09" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item wide fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00012.webp"
-                        alt="Pins & Corners Media 10" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00013.webp"
-                        alt="Pins & Corners Media 11" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00014.webp"
-                        alt="Pins & Corners Media 12" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item wide fade-up">
-                    <img src="image/Media/converted-Ratio - Grid of Nine.webp" alt="Pins & Corners Media 13"
-                        loading="lazy" decoding="async" onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Ratio - Grid of Nine3.webp" alt="Pins & Corners Media 14"
-                        loading="lazy" decoding="async" onload="this.classList.add('loaded')">
-                </div>
-                <div class="photo-item fade-up">
-                    <img src="image/Media/converted-Small Units Zayed 20 Light box 205 1.25x2 m 40 Faces-page-00004.webp"
-                        alt="Pins & Corners Media 15" loading="lazy" decoding="async"
-                        onload="this.classList.add('loaded')">
-                </div>
+            <div class="media-tabs">
+                <a href="#" class="media-tab active">ALL MEDIA</a>
+                <a href="#" class="media-tab">LATEST NEWS</a>
             </div>
         </section>
 
-        <!-- VIDEO GALLERY -->
-        <section class="gallery-section fade-up">
-            <span class="section-label">Video Gallery</span>
-            <div class="video-gallery">
-                <div class="video-item fade-up">
-                    <video class="video-preview" muted loop preload="none" posters="image/logo.png">
-                        <source src="image/Videos/SCREEN_1 1 (1).mp4" type="video/mp4">
-                    </video>
-                    <div class="video-overlay">
-                        <div class="play-button"></div>
-                        <div class="video-title">The WESTWIND Vision</div>
+        <div class="container" style="max-width: 1300px; padding: 0 5vw;">
+
+            <!-- PHOTO GALLERY SECTION -->
+            <div class="gallery-section-header fade-up">
+                <div class="gallery-section-title">PHOTO GALLERY</div>
+                <a href="#" class="view-all-link">VIEW ALL PHOTOS</a>
+            </div>
+
+            <div class="photo-asym-grid">
+                <!-- Column 1 -->
+                <div class="photo-column">
+                    <div class="gallery-img-wrapper h-portrait fade-up">
+                        <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00002.webp"
+                            alt="Media 1">
+                    </div>
+                    <div class="gallery-img-wrapper h-portrait fade-up">
+                        <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00004.webp"
+                            alt="Media 2">
                     </div>
                 </div>
-                <div class="video-item fade-up">
-                    <video class="video-preview" muted loop preload="none">
-                        <source src="image/Videos/SCREEN_2 1.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-overlay">
-                        <div class="play-button"></div>
-                        <div class="video-title">Philosophy of PINS & CORNERS</div>
+                <!-- Column 2 -->
+                <div class="photo-column" style="margin-top: 50px;">
+                    <div class="gallery-img-wrapper h-landscape fade-up">
+                        <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00003.webp"
+                            alt="Media 3">
+                    </div>
+                    <div class="gallery-img-wrapper h-tall fade-up">
+                        <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00005.webp"
+                            alt="Media 4">
+                    </div>
+                </div>
+                <!-- Column 3 -->
+                <div class="photo-column">
+                    <div class="gallery-img-wrapper h-tall fade-up">
+                        <img src="image/Media/converted-Pins & Corners Office Posters 70x100 cm - 3 cm  05 February 26 Bleed-page-00006.webp"
+                            alt="Media 5">
+                    </div>
+                    <div class="gallery-img-wrapper h-square fade-up">
+                        <img src="image/Media/converted-Ratio - Grid of Nine.webp" alt="Media 6">
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- VIDEO GALLERY SECTION -->
+            <div class="gallery-section-header fade-up" style="padding-top: 20px;">
+                <div class="gallery-section-title">VIDEO GALLERY</div>
+                <a href="#" class="view-all-link">DISCOVER MORE VIDEOS</a>
+            </div>
+
+            <div class="video-grid-modern">
+                <!-- Video 1 -->
+                <div class="video-card-modern fade-up">
+                    <div class="video-thumb-container">
+                        <img src="image/architecture_service.png" alt="Video Thumb 1">
+                        <video loop muted preload="none">
+                            <source src="image/Videos/SCREEN_1 1 (1).mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn-modern"><i class="fas fa-play"></i></div>
+                    </div>
+                    <span class="video-meta-label">Corporate Film</span>
+                    <h3 class="video-card-title">The Vision Behind PINS & CORNERS</h3>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-card-modern fade-up">
+                    <div class="video-thumb-container">
+                        <img src="image/interior_service.png" alt="Video Thumb 2">
+                        <video loop muted preload="none">
+                            <source src="image/Videos/SCREEN_2 1.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-btn-modern"><i class="fas fa-play"></i></div>
+                    </div>
+                    <span class="video-meta-label">Architecture</span>
+                    <h3 class="video-card-title">Egyptian Heritage Meets Modernity</h3>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card-modern fade-up">
+                    <div class="video-thumb-container">
+                        <img src="image/news_skyline.png" alt="Video Thumb 3">
+                        <div class="play-btn-modern"><i class="fas fa-play"></i></div>
+                    </div>
+                    <span class="video-meta-label">Projects</span>
+                    <h3 class="video-card-title">Seasonal Tour: The Grand Estate</h3>
+                </div>
+                <!-- Video 4 -->
+                <div class="video-card-modern fade-up">
+                    <div class="video-thumb-container">
+                        <img src="image/news_sustainable.png" alt="Video Thumb 4">
+                        <div class="play-btn-modern"><i class="fas fa-play"></i></div>
+                    </div>
+                    <span class="video-meta-label">Process</span>
+                    <h3 class="video-card-title">Building Tomorrow's Landmarks</h3>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
@@ -297,7 +454,7 @@
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-brand fade-up">
-                <img src="image/logo.png" alt="PINS & CORNERS Logo" class="footer-logo">
+                <img src="image/logo.png" alt="PINS & CORNERS Logo" class="footer-logo" loading="lazy" decoding="async">
                 <p class="brand-bio">
                     Purposeful Pins, Lasting Corners. We create landmark destinations that bridge tradition with
                     futuristic architecture.
@@ -324,7 +481,7 @@
                     <li><a href="index.html">Home Page</a></li>
                     <li><a href="pins-corners.html">Pins & Corners</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="media-center.html">Media Center</a></li>
+                    <li><a href="media-center.html" class="active">Media Center</a></li>
                     <li><a href="our-news.html">Our News</a></li>
                     <li><a href="reach-us.html">Reach Us</a></li>
                 </ul>
@@ -357,8 +514,8 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="container bottom-content">
-                <p>&copy; 2026 Pins & Corners. Developed with Excellence.</p>
+            <div class="container bottom-content" style="max-width: 1300px; padding: 0 5vw;">
+                <p>&copy; 2026 Pins & Corners. All Rights Reserved.</p>
                 <div class="developer-credit">Designed by <span class="accent-text">Yaaalla</span></div>
             </div>
         </div>
