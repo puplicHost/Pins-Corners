@@ -16,177 +16,311 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .page-content {
-            padding-top: 150px;
+            padding-top: 60px;
+        }
+
+        /* Reach Us Hero */
+        .reach-hero {
+            padding: 120px 5vw 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .reach-hero-left {
+            max-width: 500px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reach-label {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .reach-hero-desc {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .bg-reach-text {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(80px, 15vw, 180px);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Standard Contact Layout */
+        .contact-layout-modern {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-bottom: 120px;
+            align-items: start;
+        }
+
+        .contact-info-panel {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            gap: 40px;
         }
 
-        .contact-info-section {
-            margin-bottom: 60px;
+        .info-card-modern {
+            margin-bottom: 20px;
         }
 
-        .contact-block {
-            margin-bottom: 40px;
-        }
-
-        .contact-block h2 {
+        .info-card-modern i {
+            color: var(--primary-accent);
             font-size: 24px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .info-card-modern h3 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+        }
+
+        .info-card-modern p,
+        .info-card-modern a {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .hotline-v {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-accent);
+            margin-top: 10px;
+        }
+
+        /* Social Icons Group */
+        .social-connect-group {
+            margin-top: 50px;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            grid-column: span 2;
+        }
+
+        .social-connect-title {
+            font-family: var(--font-serif);
+            font-size: 20px;
             color: #FFFFFF;
             margin-bottom: 20px;
         }
 
-        .contact-details p {
-            font-size: 17px;
-            margin-bottom: 10px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Form Styling */
-        .eoi-form-section {
-            background-color: transparent;
-        }
-
-        .eoi-description {
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-
-        .form-field select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-        }
-
-        /* Social Circles */
-        .social-media-circles {
+        .social-row-modern {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 15px;
         }
 
-        .social-circle {
-            width: 50px;
-            height: 50px;
+        .social-icon-btn {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            border: 1px solid var(--primary-accent);
+            background-color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             color: #FFFFFF;
-            transition: 300ms ease;
-            cursor: pointer;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-family: var(--font-sans);
-            letter-spacing: 0.1em;
+            transition: 0.3s;
+            text-decoration: none;
         }
 
-        .social-circle:hover {
+        .social-icon-btn:hover {
             background-color: var(--primary-accent);
             transform: translateY(-5px);
         }
 
-        /* Message Pills */
-        .message-pills {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+        /* Careers & Team */
+        .careers-block {
+            margin-top: 50px;
+            grid-column: span 2;
         }
 
-        .pill-btn {
-            padding: 12px 30px;
-            border-radius: 50px;
+        .careers-block h4 {
             font-family: var(--font-serif);
-            font-size: 16px;
-            cursor: pointer;
-            transition: 300ms ease;
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+
+        .careers-block p {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            max-width: 350px;
+        }
+
+        .btn-team-modern {
+            padding: 12px 25px;
+            border: 1px solid #FFFFFF;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            transition: 0.3s;
         }
 
-        .pill-call {
+        .btn-team-modern:hover {
+            background-color: #FFFFFF;
+            color: #000;
+        }
+
+        /* Form Card */
+        .expression-card-modern {
+            background-color: #0d0d0d;
+            padding: 50px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .expression-card-modern h2 {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+        }
+
+        .form-row-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .field-modern-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .field-modern-group label {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.05em;
+        }
+
+        .field-modern-group input,
+        .field-modern-group select,
+        .field-modern-group textarea {
+            background-color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .field-modern-group input:focus {
+            border-color: var(--primary-accent);
+            outline: none;
+        }
+
+        .submit-btn-modern {
+            width: 100%;
+            padding: 20px;
             background-color: var(--primary-accent);
             color: #FFFFFF;
             border: none;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin-bottom: 30px;
         }
 
-        .pill-whatsapp {
-            background-color: var(--bg-color);
-            color: #FFFFFF;
-            border: 1px solid #FFFFFF;
+        .submit-btn-modern:hover {
+            background-color: var(--accent-dark);
         }
 
-        .pill-btn:hover {
-            filter: brightness(1.1);
-            transform: scale(1.05);
-        }
-
-        /* Team CTA */
-        .team-cta {
-            margin-top: 60px;
-            padding: 40px;
-            border: 1px solid var(--primary-accent);
-            text-align: center;
-        }
-
-        .team-cta a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 40px;
-            border: 1px solid #FFFFFF;
-            color: #FFFFFF;
-            font-family: var(--font-serif);
-            transition: 300ms ease;
-        }
-
-        .team-cta a:hover {
-            background-color: var(--primary-accent);
-            border-color: var(--primary-accent);
-        }
-
-        .contact-item-link {
-            display: flex;
-            align-items: center;
+        .form-quick-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.7);
-            transition: 300ms ease;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .quick-btn {
+            padding: 15px;
+            background-color: #161616;
+            color: #FFFFFF;
             text-decoration: none;
-        }
-
-        .contact-item-link:hover {
-            color: var(--primary-accent);
-            transform: translateX(10px);
-        }
-
-        .contact-item-link i {
-            width: 45px;
-            height: 45px;
-            background: rgba(138, 52, 30, 0.1);
-            border: 1px solid rgba(138, 52, 30, 0.3);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-accent);
-            font-size: 16px;
-            transition: 300ms ease;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+            transition: 0.3s;
         }
 
-        .contact-item-link:hover i {
-            background: var(--primary-accent);
-            color: #FFFFFF;
+        .quick-btn:hover {
+            background-color: #222;
         }
 
-        @media (max-width: 1024px) {
-            .page-content {
+        @media screen and (max-width: 1100px) {
+            .contact-layout-modern {
                 grid-template-columns: 1fr;
                 gap: 60px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .contact-info-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row-modern {
+                grid-template-columns: 1fr;
+            }
+
+            .form-quick-btns {
+                grid-template-columns: 1fr;
+            }
+
+            .expression-card-modern {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -218,90 +352,112 @@
         </div>
     </header>
 
-    <!-- Page Title Overlay -->
-    <h1 class="page-display-title">Reach Us</h1>
+    <div class="page-content">
 
-    <div class="page-content container">
+        <!-- REACH HERO -->
+        <section class="reach-hero fade-up">
+            <div class="reach-hero-left">
+                <span class="reach-label">CONTACT</span>
+                <p class="reach-hero-desc">
+                    Experience the pinnacle of Egyptian luxury real estate. Our advisors are available to guide you
+                    through our exclusive portfolio.
+                </p>
+            </div>
+            <div class="bg-reach-text">Reach Us</div>
+        </section>
 
-        <!-- COLUMN 1: CONTACT INFO -->
-        <div class="info-column">
-            <section class="contact-info-section fade-up">
-                <span class="section-label">Connect With Us</span>
-                <div class="contact-block">
-                    <div class="contact-details">
-                        <a href="https://maps.google.com" target="_blank" class="contact-item-link">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Plots 23–25, Al Bostan Street, Sheikh Zayed City</span>
-                        </a>
-                        <a href="tel:17576" target="_blank" class="contact-item-link">
+        <div class="container" style="max-width: 1300px; padding: 0 5vw;">
+
+            <div class="contact-layout-modern">
+                <!-- Info Column -->
+                <div class="contact-info-column fade-up">
+                    <div class="contact-info-panel">
+                        <div class="info-card-modern">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Headquarters</h3>
+                            <p>Plot 12, Financial District,<br>New Cairo, Egypt</p>
+                        </div>
+                        <div class="info-card-modern">
                             <i class="fas fa-phone-alt"></i>
-                            <span>Hotline: 17576</span>
-                        </a>
-                        <a href="mailto:info@pinsandcorners.com" target="_blank" class="contact-item-link">
+                            <h3>Telephone</h3>
+                            <a href="tel:+20223456789">+20 2 2345 6789</a>
+                            <a href="tel:+201001234567">+20 100 123 4567</a>
+                        </div>
+                        <div class="info-card-modern">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h3>Hotline</h3>
+                            <div class="hotline-v">19000</div>
+                        </div>
+                        <div class="info-card-modern">
                             <i class="fas fa-envelope"></i>
-                            <span>info@pinsandcorners.com</span>
-                        </a>
-                        <a href="https://pinsandcorners.com" target="_blank" class="contact-item-link">
-                            <i class="fas fa-globe"></i>
-                            <span>www.pinsandcorners.com</span>
-                        </a>
+                            <h3>Email</h3>
+                            <a href="mailto:info@pinsandcorners.com">info@pinsandcorners.com</a>
+                            <a href="mailto:sales@pinsandcorners.com">sales@pinsandcorners.com</a>
+                        </div>
+                    </div>
+
+                    <div class="social-connect-group">
+                        <h4 class="social-connect-title">Connect with us</h4>
+                        <div class="social-row-modern">
+                            <a href="#" class="social-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon-btn"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon-btn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon-btn"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="careers-block">
+                        <h4>Careers</h4>
+                        <p>Interested in joining our elite team of developers and designers?</p>
+                        <a href="#" class="btn-team-modern">JOIN OUR TEAM <i class="fas fa-file-alt"></i></a>
                     </div>
                 </div>
-            </section>
 
-            <section class="social-media-section fade-up" style="text-align: center;">
-                <span class="section-label">Visit Our Office</span>
-                <div class="social-media-circles">
-                    <a href="https://linkedin.com" target="_blank" class="social-circle" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="social-circle" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://facebook.com" target="_blank" class="social-circle" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://youtube.com" target="_blank" class="social-circle" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                <!-- Form Column -->
+                <div class="expression-column fade-up">
+                    <div class="expression-card-modern">
+                        <h2>Expression of Interest</h2>
+                        <form id="contact-form">
+                            <div class="form-row-modern">
+                                <div class="field-modern-group">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="John Doe">
+                                </div>
+                                <div class="field-modern-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" placeholder="+20 123 456 7890">
+                                </div>
+                            </div>
+                            <div class="field-modern-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="john@example.com">
+                            </div>
+                            <div class="field-modern-group">
+                                <label>Preferred Unit Type</label>
+                                <select>
+                                    <option value="" disabled selected>Select Unit Type</option>
+                                    <option>Luxury Serviced Apartment</option>
+                                    <option>Premium Retail Space</option>
+                                    <option>Executive Office</option>
+                                    <option>Medical Clinic</option>
+                                </select>
+                            </div>
+                            <div class="field-modern-group">
+                                <label>Message (Optional)</label>
+                                <textarea rows="4" placeholder="Tell us more about your requirements..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn-modern">SUBMIT INQUIRY</button>
+                        </form>
+
+                        <div class="form-quick-btns">
+                            <a href="tel:19000" class="quick-btn"><i class="fas fa-phone"></i> CALL US</a>
+                            <a href="https://wa.me/201155555722" class="quick-btn"><i class="fab fa-whatsapp"></i>
+                                WHATSAPP</a>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-
-        </div>
-
-        <!-- COLUMN 2: EOI FORM -->
-        <div class="form-column">
-            <section class="eoi-form-section fade-up">
-                <span class="section-label">Get In Touch</span>
-                <p class="eoi-description">Directly submit your interest for retail spaces, premium offices, medical
-                    clinics, or luxury serviced apartments at WESTWIND.</p>
-
-                <form id="eoi-form">
-                    <div class="form-field">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-field">
-                        <input type="tel" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-field">
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-field">
-                        <select required>
-                            <option value="" disabled selected>Unit Type</option>
-                            <option value="Retail">Retail</option>
-                            <option value="Office">Office</option>
-                            <option value="Clinic">Clinic</option>
-                            <option value="Serviced Apartment">Serviced Apartment</option>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <textarea placeholder="Message" rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" style="border-radius: 0;">SUBMIT</button>
-                </form>
-            </section>
         </div>
 
     </div>
@@ -315,74 +471,43 @@
                     Purposeful Pins, Lasting Corners. We create landmark destinations that bridge tradition with
                     futuristic architecture.
                 </p>
-                <div class="footer-socials">
-                    <a href="https://linkedin.com" class="social-icon" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://instagram.com" class="social-icon" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://facebook.com" class="social-icon" target="_blank" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://youtube.com" class="social-icon" target="_blank" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
             </div>
 
             <div class="footer-links-group fade-up">
-                <h4 class="footer-heading">Quick Links</h4>
+                <h4 class="footer-heading">Navigation</h4>
                 <ul class="footer-nav-list">
-                    <li><a href="index.html">Home Page</a></li>
-                    <li><a href="pins-corners.html">Pins & Corners</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="media-center.html">Media Center</a></li>
-                    <li><a href="our-news.html">Our News</a></li>
-                    <li><a href="reach-us.html">Reach Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Developments</a></li>
+                    <li><a href="pins-corners.html">About Us</a></li>
+                    <li><a href="our-news.html">News</a></li>
                 </ul>
             </div>
 
-            <div class="footer-contact-info fade-up">
-                <h4 class="footer-heading">Contact</h4>
-                <div class="contact-item">
-                    <span class="contact-label">Hotline</span>
-                    <a href="tel:17576" class="contact-value">17576</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <a href="mailto:info@pinsandcorners.com" class="contact-value">info@pinsandcorners.com</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Visit Us</span>
-                    <span class="contact-value">Sheikh Zayed, Cairo, Egypt</span>
-                </div>
+            <div class="footer-links-group fade-up">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
             </div>
 
             <div class="footer-newsletter fade-up">
-                <h4 class="footer-heading">Stay Connected</h4>
-                <p>Join our exclusive network for latest project launches.</p>
+                <h4 class="footer-heading">Newsletter</h4>
                 <form class="footer-form">
-                    <input type="email" placeholder="Your Email Address" required>
+                    <input type="email" placeholder="Email Address" required>
                     <button type="submit" class="footer-btn"><i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <div class="container bottom-content">
-                <p>&copy; 2026 Pins & Corners. Developed with Excellence.</p>
-                <div class="developer-credit">Designed by <span class="accent-text">Yaaalla</span></div>
+            <div class="container bottom-content" style="max-width: 1300px; padding: 0 5vw;">
+                <p>&copy; 2026 PINS & CORNERS. ALL RIGHTS RESERVED.</p>
+                <div class="developer-credit">Designed by <span class="accent-text">Luxury Studios</span></div>
             </div>
         </div>
     </footer>
-
-    <!-- Global Decorations -->
-    <div class="bottom-decorations">
-        <div class="curved-line curved-line-1"></div>
-        <div class="curved-line curved-line-2"></div>
-        <div class="watermark-ampersand">&</div>
-    </div>
 
     <!-- Global Floating CTAs -->
     <div class="floating-ctas">
